@@ -1,0 +1,28 @@
+create table Seller(
+sid int Primary key auto_increment,
+name varchar(15) not null,
+email varchar(15) not null unique,
+password varchar(15) not null unique
+);
+
+create table sellItem(
+ItemId int primary key auto_increment,
+property varchar(15) not null,
+price int not null;
+quntity int not null;
+
+
+
+);
+
+
+
+create table Buyer(
+bid int primary key auto_increment,
+name varchar(15) not null,
+email varchar(15) not null unique,
+ password varchar(15) not null unique
+);
+
+
+
