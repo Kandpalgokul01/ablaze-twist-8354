@@ -79,4 +79,65 @@ public class AdminImpl implements AdminDao  {
 	    return buyer;
 	}
 
+	@Override
+	public int DisputeReport() {
+		int num=0;
+		
+		try(Connection conn= DButil.provideConnection()){
+			
+		PreparedStatement ps =conn.prepareStatement("select * from dispute");
+		ResultSet rs=ps.executeQuery();
+		
+		while(rs.next()) {
+			num++;
+		}
+		
+			
+		} catch (SQLException e) {
+	
+			System.out.println(e.getMessage());
+		}
+		
+		return num;
+	}
+
+	@Override
+	public int sellingReport() {
+		int num=0;
+		try(Connection conn=DButil.provideConnection()){
+			
+			PreparedStatement ps	=conn.prepareStatement("select * from sellItem where status =?");
+			ps.setString(1,"sold");
+			ResultSet rs=	ps.executeQuery();
+	           while(rs.next()) {
+	        	   num++;
+	           }
+	           } catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		return num;
+	}
+
+	@Override
+	public String solveDispute(String name) {
+		String msg="Not Solved yet.........!";
+
+        try (Connection conn= DButil.provideConnection()) {
+				PreparedStatement  ps = conn.prepareStatement("delete from dispute where name=?");
+			     ps.setString(1,name);
+			  int x= ps.executeUpdate() ; 
+			  
+			  if(x>0) msg= "dispute solved  succesfully";
+			 
+			  
+			  
+        } catch (SQLException e) {
+				
+				System.out.println(e.getMessage());
+			}
+        
+        return msg;
+	}
+
 }

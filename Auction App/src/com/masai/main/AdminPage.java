@@ -45,4 +45,22 @@ public class AdminPage {
 		
 	
 }
+		public void viewDisputeReport() {
+			
+			int num=ad.DisputeReport();
+			System.out.println("Total dispute Report"+" "+ num);
+		}
+
+		public void viewsellingReport() {
+			
+			int num=ad.sellingReport();
+			System.out.println("Total selling Report"+" "+ num);
+			
+		}
+		
+		public void solvedispute(String name) {
+			
+			String Result= ad.solveDispute(name);
+			System.out.println(Result);
+		}
 }

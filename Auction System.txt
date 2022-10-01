@@ -1,0 +1,42 @@
+create table Seller(
+sid int Primary key auto_increment,
+name varchar(15) not null,
+email varchar(15) not null unique,
+password varchar(15) not null unique
+);
+
+create table sellItem(
+ItemId int primary key,
+property varchar(15) not null,
+price int not null,
+quntity int not null,
+location varchar(16),
+sellingId int ,
+status varchar(15) ,
+Foreign key (sellingId) References Seller(sid)
+
+);
+
+
+
+create table Buyer(
+bid int primary key auto_increment,
+name varchar(15) not null,
+email varchar(15) not null unique,
+ password varchar(15) not null unique
+);
+
+
+create table buylist(
+ 
+  buyerId int,
+   itemId int primary key,
+  Foreign key (buyerId) references Buyer(bid),
+ Foreign key (itemId) references sellItem(itemId)
+);
+ 
+
+create table dispute(
+    -> name varchar(16),
+    -> issue varchar(17)
+    -> );
