@@ -13,6 +13,12 @@ public class Seller {
 		this.email = email;
 		this.password = password;
 	}
+public Seller( int sid,String name, String email, String password) {
+		this.sId=sid;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 	
 
 	public Seller() {
